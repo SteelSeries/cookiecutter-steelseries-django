@@ -1,0 +1,8 @@
+{
+    "project_name": "Django Boilerplate",
+    "repo_name": "boilerplate",
+    "project_description": "Django Boilerplate contains all the setup you need for a django project following best practice.",
+    "year": "2014",
+    "version": "0.1.0",
+    "vagrant_ip": "10.10.10.10"
+}

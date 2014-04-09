@@ -1,0 +1,15 @@
+-r base.txt
+
+# testing
+coverage
+
+# documentation
+sphinx
+sphinxcontrib-napoleon
+sphinx_rtd_theme
+
+# tools
+django-debug-toolbar
+honcho
+flake8
+ipython

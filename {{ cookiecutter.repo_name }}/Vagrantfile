@@ -1,0 +1,17 @@
+Vagrant.configure("2") do |config|
+    config.vm.box = "precise64"
+
+    config.vm.host_name = "{{ cookiecutter.repo_name }}.vm"
+    config.vm.network :private_network, ip: "{{ cookiecutter.vagrant_ip }}"
+    config.vm.synced_folder ".", "/home/vagrant/{{ cookiecutter.repo_name }}", type: "nfs"
+    config.vm.provision "shell", path: "provision.sh"
+
+    config.vm.provider "virtualbox" do |vb, override|
+        override.vm.box_url = "http://files.vagrantup.com/precise64.box"
+        vb.customize ["modifyvm", :id, "--memory", "1024"]
+    end
+    config.vm.provider "parallels" do |p, override|
+        override.vm.box_url = "http://download.parallels.com/desktop/vagrant/precise64.box"
+        p.memory = 1024
+    end
+end

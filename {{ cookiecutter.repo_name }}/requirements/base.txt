@@ -1,0 +1,38 @@
+Django
+django-model-utils
+django-pipeline
+# django-jsonfield
+# django-braces
+
+# API
+# djangorestframework
+# django-filter
+
+# Configuration
+pytz
+unipath
+dj-database-url
+dj-email-url
+django-cache-url
+
+# Database
+psycopg2
+South
+
+# Cache and sessions
+# django-redis
+# hiredis
+
+# Queue
+# celery
+# django-celery
+
+# Logging
+raven
+newrelic
+
+# deployment
+uWSGI
+
+# misc
+# requests

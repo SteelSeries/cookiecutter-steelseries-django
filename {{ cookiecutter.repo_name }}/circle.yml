@@ -1,0 +1,18 @@
+machine:
+  python:
+    version: 2.7.6
+  # only specify non-private stuff here
+  environment:
+    DJANGO_SETTINGS_MODULE: {{ cookiecutter.repo_name }}.settings.test
+    SECRET_KEY: xyz123
+    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+
+dependencies:
+  override:
+    - pip install -r requirements/test.txt
+
+test:
+  override:
+    - cd src && coverage run -m py.test -vs --tb=native
+  post:
+    - cd src && coverage html --directory="$CIRCLE_ARTIFACTS/coverage"
