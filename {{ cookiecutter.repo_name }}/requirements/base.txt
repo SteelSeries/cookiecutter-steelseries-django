@@ -20,8 +20,8 @@ psycopg2
 South
 
 # Cache and sessions
-# django-redis
-# hiredis
+django-redis
+hiredis
 
 # Queue
 # celery

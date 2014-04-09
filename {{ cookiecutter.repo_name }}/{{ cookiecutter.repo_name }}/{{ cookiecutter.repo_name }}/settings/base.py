@@ -31,7 +31,7 @@ TEMPLATE_DEBUG = DEBUG
 
 # Security
 SECRET_KEY = env('SECRET_KEY')
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Middleware
 MIDDLEWARE_CLASSES = (
@@ -76,30 +76,14 @@ DATABASES = {
     'default': dj_database_url.config('DATABASE_URL')
 }
 
-# # Queue
-# BROKER_URL = env('BROKER_URL')
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_ACCEPT_CONTENT = ['application/json']
-
-# CELERY_IGNORE_RESULT = False
-# CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
-# CELERY_TASK_RESULT_EXPIRES = 60 * 60 * 24 * 30
-
-# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-
-# CELERYD_HIJACK_ROOT_LOGGER = False
-# CELERYD_LOG_COLOR = False
-# CELERY_REDIRECT_STDOUTS = True
-# CELERY_REDIRECT_STDOUTS_LEVEL = 'INFO'
-
 # Cache
-# CACHES = {
-#     'default': django_cache_url.config()
-# }
+CACHES = {
+    'default': django_cache_url.config()
+}
 
 # Sessions
-# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-# SESSION_CACHE_ALIAS = "default"
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
 
 # Email
 DEFAULT_FROM_EMAIL = env('FROM_EMAIL')
@@ -179,6 +163,22 @@ if 'RAVEN_DSN' in os.environ:
         'dsn': env('RAVEN_DSN'),
     }
 
+# Queue
+# BROKER_URL = env('BROKER_URL')
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+
+# CELERY_IGNORE_RESULT = False
+# CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+# CELERY_TASK_RESULT_EXPIRES = 60 * 60 * 24 * 30
+
+# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+# CELERYD_HIJACK_ROOT_LOGGER = False
+# CELERYD_LOG_COLOR = False
+# CELERY_REDIRECT_STDOUTS = True
+# CELERY_REDIRECT_STDOUTS_LEVEL = 'INFO'
+
 # Logging
 LOGGING = {
     'version': 1,
@@ -204,7 +204,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },

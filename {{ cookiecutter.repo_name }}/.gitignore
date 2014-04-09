@@ -4,7 +4,7 @@ __pycache__/
 *.egg-info
 
 # Environment
-venv/
+virtualenv/
 env/
 .env
 
@@ -43,6 +43,3 @@ sandbox/
 .sass-cache
 {{ cookiecutter.repo_name }}/static/*
 {{ cookiecutter.repo_name }}/media/*
-
-# git < 1.8.2 does not understand the ** pattern above
-assets/scss/*.css
