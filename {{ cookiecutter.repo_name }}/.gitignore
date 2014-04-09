@@ -1,0 +1,48 @@
+# Python stuff
+__pycache__/
+*.py[cod]
+*.egg-info
+
+# Environment
+venv/
+env/
+.env
+
+# OSX files
+.DS_store
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+htmlcov
+
+# Django stuff
+*.log
+*.pot
+
+# Vagrant
+.vagrant/
+*.box
+
+# Sphinx documentation
+docs/*build/
+
+# Misc
+sandbox/
+.~*
+*.db
+
+# Static and media
+/**/scss/**/*.css
+.sass-cache
+{{ cookiecutter.repo_name }}/static/*
+{{ cookiecutter.repo_name }}/media/*
+
+# git < 1.8.2 does not understand the ** pattern above
+assets/scss/*.css
