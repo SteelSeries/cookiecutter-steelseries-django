@@ -3,9 +3,9 @@ import logging
 from datetime import datetime
 
 try:
-    from celery.app.log import TaskFormatter as _TaskFormatter
+    from celery._state import get_current_task
 except ImportError:
-    _TaskFormatter = None
+    get_current_task = None
 
 
 class MicrosecondFormatter(logging.Formatter):
@@ -15,6 +15,14 @@ class MicrosecondFormatter(logging.Formatter):
         return ct.strftime('%Y-%m-%dT%H:%M:%S.%f')
 
 
-if _TaskFormatter:
-    class TaskFormatter(MicrosecondFormatter, _TaskFormatter):
-        pass
+if get_current_task:
+    class TaskFormatter(MicrosecondFormatter):
+
+        def format(self, record):
+            task = get_current_task()
+            if task and task.request:
+                record.__dict__.update(task_id=task.request.id, task_name=task.name)
+            else:
+                record.__dict__.setdefault('task_name', '???')
+                record.__dict__.setdefault('task_id', '???')
+            return logging.Formatter.format(self, record)
