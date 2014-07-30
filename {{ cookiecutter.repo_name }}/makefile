@@ -3,11 +3,11 @@
 help:
 	@echo "bootstrap - bootstrap a local dev environment in vagrant"
 	@echo "clean-pyc - remove Python file artifacts"
-	@echo "clean - remove various artifacts"
-	@echo "lint - check style with flake8"
-	@echo "test - run tests"
-	@echo "coverage - check code coverage"
-	@echo "docs - generate Sphinx HTML documentation, including API docs"
+	@echo "clean     - remove various artifacts"
+	@echo "lint      - check style with flake8"
+	@echo "test      - run tests"
+	@echo "coverage  - check code coverage"
+	@echo "docs      - generate Sphinx HTML documentation, including API docs"
 
 bootstrap:
 	vagrant up
@@ -27,7 +27,7 @@ clean: clean-pyc
 	rm -rf htmlcov/
 
 lint:
-	flake8 --max-line-length=120  --exclude=migrations src
+	flake8 --max-line-length=120 --exclude=migrations --ignore=E128 src
 
 test:
 	cd src && \
