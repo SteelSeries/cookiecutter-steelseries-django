@@ -11,7 +11,7 @@ help:
 
 bootstrap:
 	vagrant up
-	cd {{ cookiecutter.repo_name }} && \
+	cd src && \
 	honcho run python manage.py syncdb --noinput && \
 	honcho run python manage.py migrate && \
 	honcho run python -c "from django.db import DEFAULT_DB_ALIAS as db; from django.contrib.auth.models import User; User.objects.db_manager(db).create_superuser('admin', 'admin@example.com', 'admin')"
@@ -27,14 +27,14 @@ clean: clean-pyc
 	rm -rf htmlcov/
 
 lint:
-	flake8 --max-line-length=120  --exclude=migrations {{ cookiecutter.repo_name }}
+	flake8 --max-line-length=120  --exclude=migrations src
 
 test:
-	cd {{ cookiecutter.repo_name }} && \
+	cd src && \
 	honcho run python manage.py test
 
 coverage:
-	cd {{ cookiecutter.repo_name }} && \
+	cd src && \
 	honcho run coverage run --source='.' manage.py test && \
 	coverage html && \
 	open htmlcov/index.html

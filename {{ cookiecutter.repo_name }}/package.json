@@ -1,6 +1,6 @@
 {
     "name": "{{ cookiecutter.repo_name }}",
-    "version": "0.0.1",
+    "version": "{{ cookiecutter.version }}",
     "devDependencies": {
         "gulp": "*",
         "gulp-sass": "*",

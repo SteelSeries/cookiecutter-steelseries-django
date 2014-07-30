@@ -41,3 +41,6 @@ sandbox/
 # Static and media
 {{ cookiecutter.repo_name }}/static/*
 {{ cookiecutter.repo_name }}/media/*
+
+# Allow empty files
+!EMPTY
