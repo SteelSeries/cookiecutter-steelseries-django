@@ -13,10 +13,10 @@ def generate_random_key():
     secret_key = ''.join([sysrandom.choice(alphabet) for i in range(50)])
 
     # Put it in the env file
-    for path, dirs, files in os.walk('.'):
-        for filename in files:
-            if filename == '.env':
-                with open(os.path.join(path, filename), 'r+') as f:
+    for dirpath, _, filenames in os.walk('.'):
+        for filename in filenames:
+            if filename.startswith('.env'):
+                with open(os.path.join(dirpath, filename), 'r+') as f:
                     without_key = f.read()
                     with_key = without_key.replace('SECRET_KEY=""', 'SECRET_KEY="%s"' % secret_key)
                     f.seek(0)
@@ -25,7 +25,7 @@ def generate_random_key():
 
 def ensure_newlines():
     root_path = os.getcwd()
-    for dirpath, dirnames, filenames in os.walk(root_path):
+    for dirpath, _, filenames in os.walk(root_path):
         for filename in filenames:
             path = os.path.join(dirpath, filename)
             if not is_binary(path):
@@ -40,6 +40,18 @@ def ensure_newlines():
                     pass
 
 
+def delete_placeholders():
+    root_path = os.getcwd()
+    for dirpath, dirnames, filenames in os.walk(root_path):
+        for filename in filenames:
+            if filename == 'DELETE':
+                try:
+                    os.remove(os.path.join(dirpath, filename))
+                except IOError:
+                    pass
+
+
 if __name__ == '__main__':
     generate_random_key()
     ensure_newlines()
+    delete_placeholders()
