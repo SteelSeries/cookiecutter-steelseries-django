@@ -1,4 +1,4 @@
-.PHONY: clean-pyc
+.PHONY: help bootstrap clean-pyc clean lint test coverage docs
 
 help:
 	@echo "bootstrap - bootstrap a local dev environment in vagrant"
@@ -27,13 +27,17 @@ clean: clean-pyc
 	rm -rf htmlcov/
 
 lint:
-	flake8 --max-line-length=100 {{ cookiecutter.repo_name }}
+	flake8 --max-line-length=120  --exclude=migrations {{ cookiecutter.repo_name }}
 
 test:
-	@echo "Not implemented"
+	cd {{ cookiecutter.repo_name }} && \
+	honcho run python manage.py test
 
 coverage:
-	@echo "Not implemented"
+	cd {{ cookiecutter.repo_name }} && \
+	honcho run coverage run --source='.' manage.py test && \
+	coverage html && \
+	open htmlcov/index.html
 
 docs:
 	@echo "Not implemented"
