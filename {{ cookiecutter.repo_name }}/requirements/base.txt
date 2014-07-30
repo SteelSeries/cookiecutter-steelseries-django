@@ -1,6 +1,5 @@
 Django
 django-model-utils
-django-pipeline
 # django-jsonfield
 # django-braces
 

@@ -43,6 +43,18 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware'
 )
 
+# Context
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages"
+)
+
 # Urls
 ROOT_URLCONF = '{{ cookiecutter.repo_name }}.urls'
 
@@ -62,7 +74,6 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'south',
     'model_utils',
-    'pipeline',
     # 'djcelery',
 )
 
@@ -115,41 +126,11 @@ STATIC_URL = env('STATIC_URL', '/static/')
 STATIC_ROOT = env('STATIC_ROOT', PROJECT_DIR.ancestor(1).child('static'))
 
 STATICFILES_DIRS = (
-    PROJECT_DIR.ancestor(1).child('assets'),
+    PROJECT_DIR.ancestor(1).child('assets', '_build', 'base'),
+    PROJECT_DIR.ancestor(1).child('assets', '_build', 'img'),
 )
 
-# Pipeline
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'pipeline.finders.PipelineFinder',
-)
-
-PIPELINE_CSS_COMPRESSOR = None
-PIPELINE_JS_COMPRESSOR = None
-
-PIPELINE_COMPILERS = (
-    'pipeline.compilers.sass.SASSCompiler',
-)
-
-PIPELINE_CSS = {
-    'base': {
-        'source_filenames': (
-            'scss/*.scss',
-        ),
-        'output_filename': 'css/base.css',
-    },
-}
-
-PIPELINE_JS = {
-    'base': {
-        'source_filenames': (
-            'js/*.js',
-        ),
-        'output_filename': 'js/base.js',
-    }
-}
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 # Templates
 TEMPLATE_DIRS = (
@@ -252,6 +233,15 @@ LOGGING = {
         },
         'django.security': {
             'propagate': True,
-        }
+        },
+
+        # Example of overwriting annoying loggers:
+        # 'urllib3.connectionpool': {
+        #     'level': 'WARNING',
+        # },
+        # or:
+        # 'urllib3.connectionpool': {
+        #     'handlers': ['null'],
+        # },
     }
 }

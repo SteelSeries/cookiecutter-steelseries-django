@@ -4,7 +4,7 @@ __pycache__/
 *.egg-info
 
 # Environment
-virtualenv/
+venv/
 env/
 .env
 
@@ -39,7 +39,5 @@ sandbox/
 *.db
 
 # Static and media
-/**/scss/**/*.css
-.sass-cache
 {{ cookiecutter.repo_name }}/static/*
 {{ cookiecutter.repo_name }}/media/*

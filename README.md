@@ -40,7 +40,7 @@ View your current `PATH` by executing `echo $PATH` in the terminal. You want to 
 
 **6. Bonus!**
 
-For super fast installs of python dependencies, add the following environment variables to your startup files (.profile or .bash_profile or whatever you're using):
+For fast installs of python dependencies, add the following environment variables to your startup files (.profile or .bash_profile or whatever you're using):
 ```bash
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 export PIP_FIND_LINKS="$HOME/.pip/wheels"

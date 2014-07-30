@@ -1,0 +1,12 @@
+{
+    "name": "{{ cookiecutter.repo_name }}",
+    "version": "0.0.1",
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-sass": "*",
+        "gulp-uglify": "*",
+        "gulp-concat": "*",
+        "gulp-imagemin": "*",
+        "gulp-newer": "*"
+    }
+}
