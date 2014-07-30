@@ -42,5 +42,5 @@ sandbox/
 {{ cookiecutter.repo_name }}/static/*
 {{ cookiecutter.repo_name }}/media/*
 
-# Allow empty files
+# Allow EMPTY files as placeholders
 !EMPTY
