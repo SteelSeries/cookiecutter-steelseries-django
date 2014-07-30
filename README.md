@@ -29,18 +29,22 @@ First off, you probably want to install [homebrew](http://) which will make ever
 View your current `PATH` by executing `echo $PATH` in the terminal. You want to make sure that `/usr/local/bin` comes before `/usr/bin`. I use this path, and it seems to be working well: `/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin`
 
 **3. Virtual Machine**:
+
  - [Vagrant 1.5.x](http://vagrantup.com) - Get the latest version
  - [VirtualBox](http://) or [Parallels](http://) - Whichever you prefer. VirtualBox is free, Parallels is better.
 
 **4. Python**:
+
  - [python 2.7.x](http://python.org) - Get the latest version of python 2, preferably by running `brew install python`. Please do not use the Apple provided python, as it's slightly outdated, and there's no way of knowing what they've done to the poor thing before including it.
  - [pip](https://pip.pypa.io/en/latest/) - You should get a relatively up-to-date one with your python install. Make sure it's up to date with `pip install --upgrade pip`
  - [virtualenv](http://virtualenv.readthedocs.org/en/latest/) and [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/) - Install with `pip install virtualenv virtualenvwrapper` and follow the [installation guide for virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/install.html)
 
 **5. Optional**:
+
  - [PostgreSQL](http://www.postgresql.org/) - If you choose to run the project on your local machine and only use the virtual machine for "services" (recommended), you will need to install postgresql so you can build the python psycopg2 drivers. Install with `brew install postgresql`
 
 **6. Bonus!**
+
 For fast installs of python dependencies, add the following environment variables to your startup files (.profile or .bash_profile or whatever you're using):
 ```bash
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
