@@ -1,7 +1,7 @@
 machine:
   python:
     version: 2.7.6
-  # only specify non-private stuff here
+  # only specify non-private stuff here:
   environment:
     DJANGO_SETTINGS_MODULE: {{ cookiecutter.repo_name }}.settings.test
     SECRET_KEY: xyz123
@@ -13,6 +13,6 @@ dependencies:
 
 test:
   override:
-    - cd src && coverage run -m py.test -vs --tb=native
+    - cd src && coverage run --source='.' manage.py test
   post:
     - cd src && coverage html --directory="$CIRCLE_ARTIFACTS/coverage"

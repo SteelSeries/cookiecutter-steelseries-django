@@ -1,0 +1,15 @@
+[run]
+include = ./*
+omit =
+    */migrations/*
+    */site-packages/*
+    */tests/*
+
+[report]
+precision = 1
+exclude_lines =
+    pragma: no cover
+    def __unicode__
+
+[html]
+title = {{ cookiecutter.project_name }} Coverage
