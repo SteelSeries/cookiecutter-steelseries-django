@@ -39,6 +39,7 @@ sandbox/
 *.db
 
 # Static and media
+node_modules/
 {{ cookiecutter.repo_name }}/static/*
 {{ cookiecutter.repo_name }}/media/*
 
