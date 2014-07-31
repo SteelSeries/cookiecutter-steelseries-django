@@ -16,6 +16,19 @@ inspired by [Two Scoops of Django](http://twoscoopspress.org/collections/everyth
 
 Note: This setup is thorougly tested on OS X. You might have to adjust appropriately for other platforms.
 
+**Table of Contents**
+
+- [Cookiecutter template for django projects](#user-content-cookiecutter-template-for-django-projects)
+	- [Prerequisites](#user-content-prerequisites)
+	- [Principles](#user-content-principles)
+		- [Directory layout](#user-content-directory-layout)
+		- [Requirements Files](#user-content-requirements-files)
+		- [Environments](#user-content-environments)
+		- [Configuration](#user-content-configuration)
+		- [Bootstrapping](#user-content-bootstrapping)
+		- [Tools](#user-content-tools)
+		- [Static Assets](#user-content-static-assets)
+
 ## Prerequisites
 
 In order to make use of this setup, there are a couple of things that you must already have installed. I won't go into detail with each one, so have a look at the individual documentations.
