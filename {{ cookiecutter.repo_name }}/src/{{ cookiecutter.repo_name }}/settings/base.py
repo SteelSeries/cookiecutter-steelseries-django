@@ -174,14 +174,14 @@ LOGGING = {
             '()': '{{ cookiecutter.repo_name }}.utils.log.MicrosecondFormatter',
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s',
         },
-        'celery': {
-            '()': '{{ cookiecutter.repo_name }}.utils.log.MicrosecondFormatter',
-            'format': '%(asctime)s [%(levelname)s/%(processName)s] %(name)s: %(message)s',
-        },
-        'task': {
-            '()': '{{ cookiecutter.repo_name }}.utils.log.TaskFormatter',
-            'format': '%(asctime)s [%(levelname)s/%(processName)s] %(task_name)s[%(task_id)s]: %(message)s',
-        },
+        # 'celery': {
+        #     '()': '{{ cookiecutter.repo_name }}.utils.log.MicrosecondFormatter',
+        #     'format': '%(asctime)s [%(levelname)s/%(processName)s] %(name)s: %(message)s',
+        # },
+        # 'task': {
+        #     '()': '{{ cookiecutter.repo_name }}.utils.log.TaskFormatter',
+        #     'format': '%(asctime)s [%(levelname)s/%(processName)s] %(task_name)s[%(task_id)s]: %(message)s',
+        # },
     },
     'handlers': {
         'console': {
@@ -189,16 +189,16 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'celery': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'celery',
-        },
-        'task': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'task',
-        },
+        # 'celery': {
+        #     'level': 'INFO',
+        #     'class': 'logging.StreamHandler',
+        #     'formatter': 'celery',
+        # },
+        # 'task': {
+        #     'level': 'INFO',
+        #     'class': 'logging.StreamHandler',
+        #     'formatter': 'task',
+        # },
         'sentry': {
             'level': 'WARNING',
             'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
@@ -214,18 +214,18 @@ LOGGING = {
         },
 
         # Celery logging
-        'djcelery': {
-            'handlers': ['celery', 'sentry'],
-            'propagate': False,
-        },
-        'celery': {
-            'handlers': ['celery', 'sentry'],
-            'propagate': False,
-        },
-        'celery.task': {
-            'handlers': ['task', 'sentry'],
-            'propagate': False,
-        },
+        # 'djcelery': {
+        #     'handlers': ['celery', 'sentry'],
+        #     'propagate': False,
+        # },
+        # 'celery': {
+        #     'handlers': ['celery', 'sentry'],
+        #     'propagate': False,
+        # },
+        # 'celery.task': {
+        #     'handlers': ['task', 'sentry'],
+        #     'propagate': False,
+        # },
 
         # Django default logging
         'django.request': {
