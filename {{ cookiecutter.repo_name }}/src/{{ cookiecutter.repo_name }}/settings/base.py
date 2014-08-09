@@ -118,8 +118,8 @@ USE_I18N = True
 USE_L10N = True
 
 # Media files (Uploads)
-STATIC_URL = env('MEDIA_URL', '/media/')
-STATIC_ROOT = env('MEDIA_ROOT', PROJECT_DIR.ancestor(1).child('media'))
+MEDIA_URL = env('MEDIA_URL', '/media/')
+MEDIA_ROOT = env('MEDIA_ROOT', PROJECT_DIR.ancestor(1).child('media'))
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = env('STATIC_URL', '/static/')
