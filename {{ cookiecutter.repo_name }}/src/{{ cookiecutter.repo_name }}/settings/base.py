@@ -133,6 +133,13 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 # Templates
+DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja2'
+
+TEMPLATE_LOADERS = (
+    'django_jinja.loaders.AppLoader',
+    'django_jinja.loaders.FileSystemLoader',
+)
+
 TEMPLATE_DIRS = (
     PROJECT_DIR.ancestor(1).child('templates'),
 )
