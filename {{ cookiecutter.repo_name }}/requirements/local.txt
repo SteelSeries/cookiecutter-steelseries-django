@@ -11,5 +11,8 @@ sphinx_rtd_theme
 # tools
 django-debug-toolbar
 honcho
-flake8
 ipython
+
+# linting
+flake8
+pep8-naming

@@ -10,7 +10,7 @@ except ImportError:
 
 class MicrosecondFormatter(logging.Formatter):
 
-    def formatTime(self, record, *args, **kwargs):
+    def formatTime(self, record, *args, **kwargs):  # noqa
         ct = datetime.fromtimestamp(record.created)
         return ct.strftime('%Y-%m-%dT%H:%M:%S.%f')
 
