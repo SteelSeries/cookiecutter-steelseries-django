@@ -69,12 +69,16 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 )
 
 THIRD_PARTY_APPS = (
     'south',
     'model_utils',
     # 'djcelery',
+    # 'rest_framework',
+    # 'corsheaders',
+    # 'timezones',
 )
 
 LOCAL_APPS = (
@@ -133,13 +137,6 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 # Templates
-DEFAULT_JINJA2_TEMPLATE_EXTENSION = '.jinja2'
-
-TEMPLATE_LOADERS = (
-    'django_jinja.loaders.AppLoader',
-    'django_jinja.loaders.FileSystemLoader',
-)
-
 TEMPLATE_DIRS = (
     PROJECT_DIR.ancestor(1).child('templates'),
 )
@@ -166,6 +163,9 @@ if 'RAVEN_DSN' in os.environ:
 # CELERYD_LOG_COLOR = False
 # CELERY_REDIRECT_STDOUTS = True
 # CELERY_REDIRECT_STDOUTS_LEVEL = 'INFO'
+
+# CELERY_CREATE_MISSING_QUEUES = True
+# CELERY_ROUTES = {}
 
 # Logging
 LOGGING = {

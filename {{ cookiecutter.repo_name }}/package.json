@@ -1,6 +1,10 @@
 {
     "name": "{{ cookiecutter.repo_name }}",
     "version": "{{ cookiecutter.version }}",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/SteelSeries/{{ cookiecutter.repo_name }}.git"
+    },
     "devDependencies": {
         "gulp": "*",
         "gulp-sass": "*",

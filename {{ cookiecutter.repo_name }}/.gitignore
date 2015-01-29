@@ -11,6 +11,13 @@ env/
 # OSX files
 .DS_store
 
+# js
+node_modules/
+.jshintrc
+
+# sass
+.sass-cache
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -28,6 +35,7 @@ htmlcov
 
 # Vagrant
 .vagrant/
+.vagrant
 *.box
 
 # Sphinx documentation
@@ -39,9 +47,8 @@ sandbox/
 *.db
 
 # Static and media
-node_modules/
-{{ cookiecutter.repo_name }}/static/*
-{{ cookiecutter.repo_name }}/media/*
+static/*
+media/*
 
 # Allow EMPTY files as placeholders
 !EMPTY

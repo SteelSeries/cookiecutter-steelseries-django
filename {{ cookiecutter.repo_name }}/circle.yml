@@ -1,6 +1,6 @@
 machine:
   python:
-    version: 2.7.6
+    version: 2.7.9
   # only specify non-private stuff here:
   environment:
     DJANGO_SETTINGS_MODULE: {{ cookiecutter.repo_name }}.settings.test

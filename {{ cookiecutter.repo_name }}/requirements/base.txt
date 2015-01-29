@@ -1,16 +1,17 @@
 Django
 django-model-utils
-django-jinja
 # django-jsonfield
 # django-braces
+# django-timezones
 
 # API
 # djangorestframework
+# django-cors-headers
 # django-filter
 
 # Configuration
 pytz
-unipath
+Unipath
 dj-database-url
 dj-email-url
 django-cache-url
@@ -24,7 +25,7 @@ django-redis
 hiredis
 
 # Queue
-# celery
+# celery[redis]
 # django-celery
 
 # Logging

@@ -27,7 +27,7 @@ clean: clean-pyc
 	rm -rf htmlcov/
 
 lint:
-	flake8 --max-line-length=120 --exclude=migrations --ignore=E128 src
+	flake8 --max-line-length=140 --exclude=migrations --ignore=E128 src
 
 test:
 	cd src && \
@@ -36,8 +36,7 @@ test:
 coverage:
 	cd src && \
 	honcho run coverage run --source='.' manage.py test && \
-	coverage html && \
-	open htmlcov/index.html
+	coverage html
 
 docs:
 	@echo "Not implemented"
