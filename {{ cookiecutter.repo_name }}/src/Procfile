@@ -1,2 +1,2 @@
-web: python manage.py runserver 127.0.0.1:80{{ port }}
+web: python manage.py runserver 127.0.0.1:80{{ cookiecutter.port }}
 # worker: celery worker --app={{ cookiecutter.repo_name }} --concurrency=2 --beat --loglevel=INFO
