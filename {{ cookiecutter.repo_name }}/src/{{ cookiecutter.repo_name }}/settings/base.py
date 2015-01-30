@@ -73,7 +73,6 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    'south',
     'model_utils',
     # 'djcelery',
     # 'rest_framework',
