@@ -18,7 +18,6 @@ django-cache-url
 
 # Database
 psycopg2
-South
 
 # Cache and sessions
 django-redis
