@@ -11,12 +11,11 @@ env/
 # OSX files
 .DS_store
 
-# js
+# static
 node_modules/
 .jshintrc
-
-# sass
 .sass-cache
+src/assets/_build
 
 # Installer logs
 pip-log.txt

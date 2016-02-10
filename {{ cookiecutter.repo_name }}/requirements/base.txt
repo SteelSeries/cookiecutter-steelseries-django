@@ -1,13 +1,10 @@
 Django
 django-model-utils
-# django-jsonfield
 # django-braces
 # django-timezones
-
-# API
-# djangorestframework
-# django-cors-headers
-# django-filter
+# django-floppyforms
+# django-robots
+# django-object-actions
 
 # Configuration
 pytz
@@ -23,9 +20,24 @@ psycopg2
 django-redis
 hiredis
 
+# Security
+# django-stronghold
+# django-sudo
+# django-hijack
+
+# Uploads and thumbnails
+# boto
+# django-storages
+# easy-thumbnails
+# Pillow
+
+# API
+# djangorestframework
+# django-cors-headers
+# django-filter
+
 # Queue
 # celery[redis]
-# django-celery
 
 # Logging
 raven
@@ -36,3 +48,5 @@ uWSGI
 
 # misc
 # requests
+# geoip2
+# analytics-python

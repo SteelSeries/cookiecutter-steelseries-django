@@ -27,42 +27,13 @@ PROJECT_DIR = Path(__file__).absolute().ancestor(2)
 
 # Debugging
 DEBUG = False
-TEMPLATE_DEBUG = DEBUG
 
 # Security
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = []
 
-# Middleware
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
-)
-
-# Context
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.core.context_processors.request",
-    "django.contrib.messages.context_processors.messages"
-)
-
-# Urls
-ROOT_URLCONF = '{{ cookiecutter.repo_name }}.urls'
-
-# WSGI
-WSGI_APPLICATION = '{{ cookiecutter.repo_name }}.wsgi.application'
-
 # Application definition
-DJANGO_APPS = (
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,20 +41,60 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-)
+]
 
-THIRD_PARTY_APPS = (
+THIRD_PARTY_APPS = [
     'model_utils',
-    # 'djcelery',
     # 'rest_framework',
     # 'corsheaders',
     # 'timezones',
-)
+]
 
-LOCAL_APPS = (
-)
+LOCAL_APPS = [
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# Middleware
+MIDDLEWARE_CLASSES = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Urls
+ROOT_URLCONF = '{{ cookiecutter.repo_name }}.urls'
+
+# Templates
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            PROJECT_DIR.ancestor(1).child('templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+# WSGI
+WSGI_APPLICATION = '{{ cookiecutter.repo_name }}.wsgi.application'
 
 # Database
 DATABASES = {
@@ -128,17 +139,47 @@ MEDIA_ROOT = env('MEDIA_ROOT', PROJECT_DIR.ancestor(1).child('media'))
 STATIC_URL = env('STATIC_URL', '/static/')
 STATIC_ROOT = env('STATIC_ROOT', PROJECT_DIR.ancestor(1).child('static'))
 
-STATICFILES_DIRS = (
-    PROJECT_DIR.ancestor(1).child('assets', '_build', 'base'),
-    PROJECT_DIR.ancestor(1).child('assets', '_build', 'img'),
-)
+STATICFILES_DIRS = [
+    PROJECT_DIR.ancestor(1).child('assets', '_build'),
+]
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
-# Templates
-TEMPLATE_DIRS = (
-    PROJECT_DIR.ancestor(1).child('templates'),
-)
+# Authentication
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+AUTH_USER_MODEL = 'auth.User'
+
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/accounts/logout/'
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher'
+]
 
 # Raven
 if 'RAVEN_DSN' in os.environ:

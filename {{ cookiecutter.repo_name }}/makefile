@@ -12,9 +12,8 @@ help:
 bootstrap:
 	vagrant up
 	cd src && \
-	honcho run python manage.py syncdb --noinput && \
 	honcho run python manage.py migrate && \
-	honcho run python -c "from django.db import DEFAULT_DB_ALIAS as db; from django.contrib.auth.models import User; User.objects.db_manager(db).create_superuser('admin', 'admin@example.com', 'admin')"
+	honcho run python -c "import django; django.setup(); from django.db import DEFAULT_DB_ALIAS as db; from django.contrib.auth.models import User; User.objects.db_manager(db).create_superuser('admin', 'admin@example.com', 'admin')"
 
 
 clean-pyc:

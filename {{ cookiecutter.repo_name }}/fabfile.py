@@ -57,7 +57,7 @@ def manage(cmd):
 
 
 def collectstatic():
-    manage('collectstatic --noinput --clear')
+    manage('collectstatic --noinput')
 
 
 # Tasks
@@ -99,5 +99,4 @@ def deploy():
 
 @task
 def syncdb():
-    manage('syncdb --noinput')
-    manage('migrate')
+    manage('migrate --noinput')

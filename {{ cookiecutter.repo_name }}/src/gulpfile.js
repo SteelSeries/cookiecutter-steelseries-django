@@ -3,7 +3,10 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
-    imagemin = require('gulp-imagemin');
+    sourcemaps = require('gulp-sourcemaps'),
+    imagemin = require('gulp-imagemin'),
+    plumber = require('gulp-plumber'),
+    notify = require("gulp-notify");
 
 
 // Paths
@@ -13,8 +16,8 @@ var styles = ['assets/scss/app.scss'];
 var scripts = ['assets/js/**/*.js'];
 
 var out = {
-    dev: 'assets/_build/dev/',
-    prod: 'assets/_build/prod/',
+    js: 'assets/_build/js/',
+    css: 'assets/_build/css/',
     img: 'assets/_build/img/',
 };
 
@@ -23,25 +26,20 @@ var out = {
 
 gulp.task('scripts', function() {
     gulp.src(scripts)
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest(out.dev));
-
-    gulp.src(scripts)
-        .pipe(uglify())
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest(out.prod));
+        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+        .pipe(concat('{{ cookiecutter.repo_name }}.js'))
+        .pipe(gulp.dest(out.js))
+        .pipe(livereload());
 });
 
 gulp.task('styles', function() {
     gulp.src(styles)
-        .pipe(sass({sourceComments: 'map'}))
-        .pipe(concat('app.css'))
-        .pipe(gulp.dest(out.dev));
-
-    gulp.src(styles)
-        .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(concat('app.css'))
-        .pipe(gulp.dest(out.prod));
+        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(concat('{{ cookiecutter.repo_name }}.css'))
+        .pipe(gulp.dest(out.css));
 });
 
 gulp.task('images', function() {
