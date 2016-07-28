@@ -19,5 +19,5 @@ INSTALLED_APPS += ['debug_toolbar']
 MIDDLEWARE_CLASSES = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE_CLASSES
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': 'samples.utils.debug_toolbar.show_toolbar'
+    'SHOW_TOOLBAR_CALLBACK': '{{ cookiecutter.repo_name }}.utils.debug_toolbar.show_toolbar'
 }
