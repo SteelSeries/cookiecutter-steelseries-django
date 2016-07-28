@@ -1,18 +1,11 @@
 -r base.txt
+-r test.txt
 
-# testing
-coverage
-
-# documentation
+# Documentation
 sphinx
 sphinxcontrib-napoleon
 sphinx_rtd_theme
 
-# tools
-django-debug-toolbar
+# Tools
 honcho
 ipython
-
-# linting
-flake8
-pep8-naming

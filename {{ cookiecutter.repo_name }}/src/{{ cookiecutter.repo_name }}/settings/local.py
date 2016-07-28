@@ -3,22 +3,21 @@ from .base import *  # noqa
 
 # Debug
 DEBUG = True
-
-# Allow everything, so we can set something memorable in our hosts file if we want
-ALLOWED_HOSTS = ['*']
+TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
 
 # Multiple projects running on localhost messes with sessions:
 SESSION_COOKIE_NAME = "{{ cookiecutter.repo_name }}-sessionid"
 
-# Don't use template caching
-# TEMPLATES[0]['OPTIONS']['loaders'] = [
-#     'django.template.loaders.filesystem.Loader',
-#     'django.template.loaders.app_directories.Loader'
-# ]
-TEMPLATES[0]['OPTIONS']['debug'] = DEBUG
+# Env bar
+INSTALLED_APPS += ['env_bar']
+MIDDLEWARE_CLASSES = ['env_bar.middleware.EnvBarMiddleware'] + MIDDLEWARE_CLASSES
+
+ENV_BAR_ENVIRONMENT = 'Development'
 
 # Debug Toolbar
-# INSTALLED_APPS += ('debug_toolbar',)
-# MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+INSTALLED_APPS += ['debug_toolbar']
+MIDDLEWARE_CLASSES = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE_CLASSES
 
-INTERNAL_IPS = ('10.10.10.1', '127.0.0.1',)
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'samples.utils.debug_toolbar.show_toolbar'
+}

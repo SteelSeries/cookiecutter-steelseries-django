@@ -4,6 +4,7 @@ omit =
     */migrations/*
     */site-packages/*
     */tests/*
+    */tests.py
 
 [report]
 precision = 1

@@ -1,0 +1,5 @@
+{{ cookiecutter.repo_name }} (VERSION-1) UNRELEASED; urgency=low
+
+  * Commit: SHA
+
+ -- SteelSeries <digital@steelseries.com>  DATE

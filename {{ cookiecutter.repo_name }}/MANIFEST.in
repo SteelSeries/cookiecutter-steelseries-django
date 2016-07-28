@@ -1,0 +1,14 @@
+global-include *
+
+# no bytecode files
+global-exclude *.py[co]
+
+# don't include source assets
+prune src/assets
+exclude src/gulpfile.js
+
+# no local development artifacts
+prune src/media
+exclude src/.env.example
+exclude src/.coveragerc
+exclude src/Procfile

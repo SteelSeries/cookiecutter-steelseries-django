@@ -5,6 +5,7 @@ django-model-utils
 # django-floppyforms
 # django-robots
 # django-object-actions
+# django-mailviews
 
 # Configuration
 pytz
@@ -36,7 +37,12 @@ hiredis
 # django-cors-headers
 # django-filter
 
+# Tools
+django-debug-toolbar
+django-env-bar
+
 # Queue
+# django-celery
 # celery[redis]
 
 # Logging

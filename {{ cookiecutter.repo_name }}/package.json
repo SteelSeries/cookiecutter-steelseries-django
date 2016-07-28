@@ -5,6 +5,7 @@
         "type": "git",
         "url": "git://github.com/SteelSeries/{{ cookiecutter.repo_name }}.git"
     },
+    "license": "UNLICENSED",
     "devDependencies": {
         "gulp": "*",
         "gulp-sass": "*",
@@ -13,7 +14,8 @@
         "gulp-sourcemaps": "*",
         "gulp-plumber": "*",
         "gulp-notify": "*",
-        "gulp-imagemin": "*",
-        "gulp-newer": "*"
+        "gulp-environments": "*",
+        "gulp-util": "*",
+        "run-sequence": "*"
     }
 }
