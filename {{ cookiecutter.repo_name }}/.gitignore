@@ -46,8 +46,8 @@ sandbox/
 *.db
 
 # Static and media
-static/*
-media/*
+src/static/*
+src/media/*
 
 # Allow EMPTY files as placeholders
 !EMPTY
