@@ -1,3 +1,17 @@
+# Dependencies:
+# psycopg2:
+#    build-depends: libpq-dev
+#    depends: libpq5
+# pillow:
+#    build-depends: libtiff4-dev, libjpeg8-dev, zlib1g-dev, libfreetype6-dev, liblcms2-dev, libwebp-dev
+#    depends: libjpeg8, zlib1g, libfreetype6, liblcms2-2, libwebp5
+# lxml:
+#    build-depends: libxml2-dev, libxslt1-dev
+#    depends: libxml2, libxslt1.1
+# saml:
+#    build-depends: libxmlsec1-dev
+#    depends: libxmlsec1, libxmlsec1-openssl
+
 Source: {{ cookiecutter.repo_name }}
 Section: python
 Priority: extra
